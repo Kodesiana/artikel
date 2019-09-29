@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <!-- Start Menu Shortcut -->
+    <ComponentGroup Id="AppShortcuts">
+      <Component Id="POSShortcut" Guid="*" Directory="ApplicationProgramsFolder">
+        <!-- POS -->
+        <Shortcut Id="POSStartMenuShortcut"
+                  Name="Wiyata Bhakti POS"
+                  Description="Aplikasi POS Wiyata Bhakti"
+                  Target="[#WiyataBhakti.App.exe]"
+                  WorkingDirectory="INSTALLFOLDER" />
+
+        <!-- Uninstall -->
+        <Shortcut Id="UninstallProduct"
+                  Name="Uninstall Wiyata Bhakti"
+                  Description="Uninstalls Wiyata Bhakti"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]" />
+
+        <RemoveFolder Id="CleanUpShortcut" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Wiyata Bhakti" Name="installed_startmenu" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+
+      <!-- Desktop Shortcut -->
+      <Component Id="DesktopShortcut" Guid="*" Directory="DesktopFolder">
+        <!-- POS -->
+        <Shortcut Id="POSDesktopShortcut"
+                  Name="Wiyata Bhakti POS"
+                  Description="Aplikasi POS Wiyata Bhakti"
+                  Target="[#WiyataBhakti.App.exe]"
+                  WorkingDirectory="INSTALLFOLDER" />
+
+        <RemoveFile Id="RemovePosPOSDesktopShortcut" Name="Wiyata Bhakti POS.lnk" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Wiyata Bhakti" Name="installed_dekstop" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include "RelativePath.wxi" ?>
+  <Fragment>
+    <!-- Binaries -->
+    <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+      <!-- Executables -->
+      <Component Id="WiyataBhakti.App.exe" Guid="*">
+        <File Id="WiyataBhakti.App.exe" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.App.exe" />
+      </Component>
+      <Component Id="WiyataBhakti.Auditor.exe" Guid="*">
+        <File Id="WiyataBhakti.Auditor.exe" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Auditor.exe" />
+      </Component>
+
+      <!-- Libraries -->
+      <Component Id="Castle.Core.dll" Guid="*">
+        <File Id="Castle.Core.dll" KeyPath="yes" Source="$(var.SourceDir)\Castle.Core.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.CrystalReports.Engine.dll" Guid="*">
+        <File Id="CrystalDecisions.CrystalReports.Engine.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.CrystalReports.Engine.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.ClientDoc.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.ClientDoc.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.ClientDoc.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.CommLayer.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.CommLayer.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.CommLayer.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.CommonControls.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.CommonControls.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.CommonControls.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.CommonObjectModel.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.CommonObjectModel.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.CommonObjectModel.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.Controllers.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.Controllers.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.Controllers.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.CubeDefModel.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.CubeDefModel.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.CubeDefModel.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.DataDefModel.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.DataDefModel.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.DataDefModel.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.DataSetConversion.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.DataSetConversion.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.DataSetConversion.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.ObjectFactory.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.ObjectFactory.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.ObjectFactory.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.Prompting.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.Prompting.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.Prompting.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.ReportDefModel.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.ReportDefModel.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.ReportDefModel.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportAppServer.XmlSerialize.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportAppServer.XmlSerialize.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportAppServer.XmlSerialize.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.ReportSource.dll" Guid="*">
+        <File Id="CrystalDecisions.ReportSource.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.ReportSource.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.Shared.dll" Guid="*">
+        <File Id="CrystalDecisions.Shared.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.Shared.dll" />
+      </Component>
+      <Component Id="CrystalDecisions.Windows.Forms.dll" Guid="*">
+        <File Id="CrystalDecisions.Windows.Forms.dll" KeyPath="yes" Source="$(var.SourceDir)\CrystalDecisions.Windows.Forms.dll" />
+      </Component>
+      <Component Id="EntityFramework.dll" Guid="*">
+        <File Id="EntityFramework.dll" KeyPath="yes" Source="$(var.SourceDir)\EntityFramework.dll" />
+      </Component>
+      <Component Id="EntityFramework.SqlServer.dll" Guid="*">
+        <File Id="EntityFramework.SqlServer.dll" KeyPath="yes" Source="$(var.SourceDir)\EntityFramework.SqlServer.dll" />
+      </Component>
+      <Component Id="FlashControlV71.dll" Guid="*">
+        <File Id="FlashControlV71.dll" KeyPath="yes" Source="$(var.SourceDir)\FlashControlV71.dll" />
+      </Component>
+      <Component Id="Ninject.dll" Guid="*">
+        <File Id="Ninject.dll" KeyPath="yes" Source="$(var.SourceDir)\Ninject.dll" />
+      </Component>
+      <Component Id="Ninject.Extensions.Interception.dll" Guid="*">
+        <File Id="Ninject.Extensions.Interception.dll" KeyPath="yes" Source="$(var.SourceDir)\Ninject.Extensions.Interception.dll" />
+      </Component>
+      <Component Id="Ninject.Extensions.Interception.DynamicProxy.dll" Guid="*">
+        <File Id="Ninject.Extensions.Interception.DynamicProxy.dll" KeyPath="yes" Source="$(var.SourceDir)\Ninject.Extensions.Interception.DynamicProxy.dll" />
+      </Component>
+      <Component Id="ShockwaveFlashObjects.dll" Guid="*">
+        <File Id="ShockwaveFlashObjects.dll" KeyPath="yes" Source="$(var.SourceDir)\ShockwaveFlashObjects.dll" />
+      </Component>
+      <Component Id="stdole.dll" Guid="*">
+        <File Id="stdole.dll" KeyPath="yes" Source="$(var.SourceDir)\stdole.dll" />
+      </Component>
+      <Component Id="WiyataBhakti.Business.dll" Guid="*">
+        <File Id="WiyataBhakti.Business.dll" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Business.dll" />
+      </Component>
+      <Component Id="WiyataBhakti.Configuration.dll" Guid="*">
+        <File Id="WiyataBhakti.Configuration.dll" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Configuration.dll" />
+      </Component>
+      <Component Id="WiyataBhakti.Data.dll" Guid="*">
+        <File Id="WiyataBhakti.Data.dll" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Data.dll" />
+      </Component>
+      <Component Id="zxing.dll" Guid="*">
+        <File Id="zxing.dll" KeyPath="yes" Source="$(var.SourceDir)\zxing.dll" />
+      </Component>
+
+      <!-- Configuration XML -->
+      <Component Id="WiyataBhakti.App.exe.config" Guid="*">
+        <File Id="WiyataBhakti.App.exe.config" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.App.exe.config" />
+      </Component>
+      <Component Id="WiyataBhakti.Auditor.exe.config" Guid="*">
+        <File Id="WiyataBhakti.Auditor.exe.config" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Auditor.exe.config" />
+      </Component>
+      <Component Id="WiyataBhakti.Configuration.dll.config" Guid="*">
+        <File Id="WiyataBhakti.Configuration.dll.config" KeyPath="yes" Source="$(var.SourceDir)\WiyataBhakti.Configuration.dll.config" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Database -->
+    <ComponentGroup Id="DatabaseFiles" Directory="DATAFOLDER">
+      <Component Id="WiyataBhakti.mdf" Guid="{9D888C4D-8063-41A5-8BE2-7E66574F870C}">
+        <File Id="WiyataBhakti.mdf" Source="$(var.SourceDir)\WiyataBhakti.mdf" />
+
+        <RemoveFile Id="RemoveDb" Name="WiyataBhakti.mdf" On="uninstall"/>
+        <RegistryValue Key="Software\Wiyata Bhakti" Root="HKCU" Type="integer" Name="db_main" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="WiyataBhakti_log.ldf" Guid="{6F541797-751A-48D6-8825-768A76D18774}">
+        <File Id="WiyataBhakti_log.ldf" Source="$(var.SourceDir)\WiyataBhakti_log.ldf" />
+
+        <RemoveFile Id="RemoveDbLog" Name="WiyataBhakti_log.mdf" On="uninstall"/>
+        <RegistryValue Key="Software\Wiyata Bhakti" Root="HKCU" Type="integer" Name="db_log" Value="1" KeyPath="yes" />
+      </Component>
+      <Component Id="DataFolderComp" Guid="*">
+        <RemoveFolder Id="CleanUpDatabase" Directory="DATAFOLDER" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\Wiyata Bhakti" Name="installed_db" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

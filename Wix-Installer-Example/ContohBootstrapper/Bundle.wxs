@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <?include "RelativePath.wxi" ?>
+  
+  <Bundle Name="Wiyata Bhakti POS" Version="1.0.0.0" Manufacturer="Kodesiana.com"
+          UpgradeCode="35e2cf60-5f88-4ce3-a6e9-0d4e09d5a449">
+    <!-- Bootstrapper -->
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseFile="$(var.SourceDir)\license.rtf"
+        LogoFile="$(var.SourceDir)\logo.png"
+        ShowVersion="yes" />
+    </BootstrapperApplicationRef>
+
+    <!-- Packages -->
+    <Chain>
+      <PackageGroupRef Id="VCRedist"/>
+      <PackageGroupRef Id="NetFx451FullRedist"/>
+      <PackageGroupRef Id="SQLServerLocalDB"/>
+      <PackageGroupRef Id="SAPCrystalReport"/>
+      <PackageGroupRef Id="WiyataBhaktiFull"/>
+    </Chain>
+  </Bundle>
+</Wix>

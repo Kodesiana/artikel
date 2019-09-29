@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <?include "RelativePath.wxi" ?>
+  <Product Id="*" Name="Wiyata Bhakti" Language="1033" Version="1.0.0.0" Manufacturer="Fahmi Noor Fiqri"
+           UpgradeCode="{B3559FC8-4392-4CC4-A74D-E39A19B2E827}">
+    <!-- Package -->
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Media Id="1" Cabinet="app.cab" EmbedCab="yes" />
+    <Icon Id="icon.ico" SourceFile="$(var.AuxiliaryDir)\WiyataBhakti-posApp.ico" />
+
+    <!-- Properties -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.AuxiliaryDir)\license.rtf" />
+    <Property Id="WixShellExecTarget" Value="[#WiyataBhakti.App.exe]" />
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Buka Wiyata Bhakti" />
+    <PropertyRef Id="NETFRAMEWORK45" />
+
+    <!-- Install Conditions -->
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+    <Condition Message="This application requires SQL Server 2014 LocalDB. Please install the SQL Server 2014 LocalDB then run this installer again.">
+      <![CDATA[Installed OR MSSQLSERVERLOCALDB32 OR MSSQLSERVERLOCALDB64]]>
+    </Condition>
+    <Condition Message="This application requires SAP Crystal Report Shared Runtime. Please install the SAP Crystal Report Shared Runtime then run this installer again.">
+      <![CDATA[Installed OR SAPBUSINESSOBJECT32 OR SAPBUSINESSOBJECT64]]>
+    </Condition>
+
+    <!-- Features to install -->
+    <Feature Id="ProductFeature" Title="Wiyata Bhakti Installer" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+      <ComponentGroupRef Id="DatabaseFiles" />
+      <ComponentGroupRef Id="AppShortcuts" />
+    </Feature>
+
+    <!-- UI -->
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">
+        WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed
+      </Publish>
+    </UI>
+
+    <!-- Custom Actions -->
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+  </Product>
+</Wix>

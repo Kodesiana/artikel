@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ContohSetup", "ContohSetup\ContohSetup.wixproj", "{BBE34D34-B5BE-4449-BEAF-27C9DDCA183A}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ContohBootstrapper", "ContohBootstrapper\ContohBootstrapper.wixproj", "{E26AD856-C2D5-44C6-B9BF-38E6EA66EEB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6816CB82-AC52-45FE-AB83-61CB79AEEBF2}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.MD = LICENSE.MD
+		README.MD = README.MD
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBE34D34-B5BE-4449-BEAF-27C9DDCA183A}.Debug|x86.ActiveCfg = Debug|x86
+		{BBE34D34-B5BE-4449-BEAF-27C9DDCA183A}.Debug|x86.Build.0 = Debug|x86
+		{BBE34D34-B5BE-4449-BEAF-27C9DDCA183A}.Release|x86.ActiveCfg = Release|x86
+		{BBE34D34-B5BE-4449-BEAF-27C9DDCA183A}.Release|x86.Build.0 = Release|x86
+		{E26AD856-C2D5-44C6-B9BF-38E6EA66EEB0}.Debug|x86.ActiveCfg = Debug|x86
+		{E26AD856-C2D5-44C6-B9BF-38E6EA66EEB0}.Debug|x86.Build.0 = Debug|x86
+		{E26AD856-C2D5-44C6-B9BF-38E6EA66EEB0}.Release|x86.ActiveCfg = Release|x86
+		{E26AD856-C2D5-44C6-B9BF-38E6EA66EEB0}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54C90E19-31DE-44C5-A350-2C8B4B173E08}
+	EndGlobalSection
+EndGlobal

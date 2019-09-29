@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+	  <!-- Prerequiretes Search -->
+	  <Property Id="MSSQLSERVERLOCALDB32">
+	    <RegistrySearch Id="MSSQLSERVERLOCALDB32" Key="SOFTWARE\Microsoft\Microsoft SQL Server 2014 Redist\SqlLocalDB\CurrentVersion"
+	                    Name="Version" Root="HKLM" Type="raw" Win64="no" />
+	  </Property>
+	  <Property Id="MSSQLSERVERLOCALDB64">
+	    <RegistrySearch Id="MSSQLSERVERLOCALDB64" Key="SOFTWARE\Microsoft\Microsoft SQL Server 2014 Redist\SqlLocalDB\CurrentVersion"
+	                    Name="Version" Root="HKLM" Type="raw" Win64="yes" />
+	  </Property>
+	  <Property Id="SAPBUSINESSOBJECT32">
+	    <RegistrySearch Id="SAPBUSINESSOBJECT32" Key="SOFTWARE\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Shared"
+	                    Name="BINDIR" Root="HKLM" Type="raw" Win64="no" />
+	  </Property>
+	  <Property Id="SAPBUSINESSOBJECT64">
+	    <RegistrySearch Id="SAPBUSINESSOBJECT64" Key="SOFTWARE\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Shared"
+	                    Name="BINDIR" Root="HKLM" Type="raw" Win64="yes" />
+	  </Property>
+	</Fragment>
+</Wix>

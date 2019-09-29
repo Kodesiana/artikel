@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <?include "RelativePath.wxi" ?>
+
+  <Fragment>
+    <util:RegistrySearchRef Id="NETFRAMEWORK45"/>
+    <util:RegistrySearch Id="SQLSERVERLOCALDB" Variable="SQLSERVERLOCALDB"
+                         Root="HKLM" Value="ParentInstance" Result="exists" Win64="no"
+                         Key="SOFTWARE\Microsoft\Microsoft SQL Server Local DB\Installed Versions\12.0" />
+    <util:RegistrySearch Id="SAPCR" Variable="SAPCR"
+                         Root="HKLM" Value="BINDIR" Result="exists" Win64="no"
+                         Key="SOFTWARE\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Shared" />
+
+    <!-- NET Framework -->
+    <PackageGroup Id="NetFx451FullRedist">
+      <ExePackage Id="NetFx451FullRedist" Cache="no" Compressed="yes"
+                  PerMachine="yes" Vital="yes" Permanent="yes" Protocol="netfx4"
+                  Name="Redist\NDP451-KB2858728-x86-x64-AllOS-ENU.exe"
+                  DetectCondition="NETFRAMEWORK45"
+                  
+                  SourceFile="$(var.SourceDir)\NDP451-KB2858728-x86-x64-AllOS-ENU.exe"
+                  InstallCommand="/q /norestart /ChainingPackage &quot;[WixBundleName]&quot;"
+                  RepairCommand="/q /norestart /repair /ChainingPackage &quot;[WixBundleName]&quot;"
+                  UninstallCommand="/uninstall /q /norestart /ChainingPackage &quot;[WixBundleName]&quot;" />
+    </PackageGroup>
+
+    <!-- SQL Server LocalDB -->
+    <PackageGroup Id="SQLServerLocalDB">
+      <MsiPackage SourceFile="$(var.SourceDir)\SqlLocalDB-2014-32.msi" InstallCondition="(NOT VersionNT64) AND (NOT SQLSERVERLOCALDB)">
+        <MsiProperty Name="IACCEPTSQLLOCALDBLICENSETERMS" Value="YES"/>
+      </MsiPackage>
+      <MsiPackage SourceFile="$(var.SourceDir)\SqlLocalDB-2014-64.msi" InstallCondition="(VersionNT64) AND (NOT SQLSERVERLOCALDB)">
+        <MsiProperty Name="IACCEPTSQLLOCALDBLICENSETERMS" Value="YES"/>
+      </MsiPackage>
+    </PackageGroup>
+
+    <!-- Visual C++ Redistributable 2015 -->
+    <PackageGroup Id="VCRedist">
+      <ExePackage Id="VCRedist32" Cache="no" Compressed="yes"
+                  PerMachine="yes" Vital="yes" Permanent="yes" Name="Redist\vcredist-2015_x86.exe" InstallCondition="NOT VersionNT64"
+                  SourceFile="$(var.SourceDir)\vcredist-2015_x86.exe" InstallCommand="/q" />
+      <ExePackage Id="VCRedist64" Cache="no" Compressed="yes"
+                  PerMachine="yes" Vital="yes" Permanent="yes" Name="Redist\vcredist-2015_x64.exe" InstallCondition="VersionNT64"
+                  SourceFile="$(var.SourceDir)\vcredist-2015_x64.exe" InstallCommand="/q" />
+    </PackageGroup>
+
+    <!-- SAP CrystalReport -->
+    <PackageGroup Id="SAPCrystalReport">
+      <MsiPackage SourceFile="$(var.SourceDir)\CRRuntime_32bit_13_0_22.msi" InstallCondition="(NOT VersionNT64) AND (NOT SAPCR)" />
+      <MsiPackage SourceFile="$(var.SourceDir)\CRRuntime_64bit_13_0_22.msi" InstallCondition="(VersionNT64) AND (NOT SAPCR)" />
+    </PackageGroup>
+
+    <!-- Wiyata Bhakti App -->
+    <PackageGroup Id="WiyataBhaktiFull">
+      <MsiPackage SourceFile="$(var.SourceDir)\WiyataBhakti.Installer.msi" />
+    </PackageGroup>
+  </Fragment>
+</Wix>
