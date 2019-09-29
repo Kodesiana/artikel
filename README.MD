@@ -9,11 +9,11 @@ kode dari berbagai platform dan menghindari *broken link*.
 
 ## Daftar Isi :memo:
 
-1. [Membuat Countdown Timer Dua Monitor WinForms C#/VB.NET][1a] [source code][1b]
-2. [Teknik Pagination dan Styling untuk DataGridView C#/VB.NET][2a] (proses)
-3. [16+ Tips Manipulasi DateTime pada C#/VB.NET][3a] [source code][3b]
-4. [Tutorial Installer dengan WiX Toolset][4a] [source code][4b]
-5. [Menampilkan Data dari PBX menggunakan SerialPort C#/VB.NET][5a] source code (proses)
+1. [Membuat Countdown Timer Dua Monitor WinForms C#/VB.NET][1a] ([**source code**][1b])
+2. [Teknik Pagination dan Styling untuk DataGridView C#/VB.NET][2a] (**source code**)
+3. [16+ Tips Manipulasi DateTime pada C#/VB.NET][3a] ([**source code**][3b])
+4. [Tutorial Installer dengan WiX Toolset][4a] ([**source code**][4b])
+5. [Menampilkan Data dari PBX menggunakan SerialPort C#/VB.NET][5a] (**source code**)
 
 
 ## Lisensi :whale2:
