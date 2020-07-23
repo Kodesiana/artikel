@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Kodesiana.PBXListener</id>
+    <version>1.0.6676.27951</version>
+    <title>PBXListener</title>
+    <description>PBX/PABX serial data monitor.</description>
+    <authors>Fahmi Noor Fiqri</authors>
+    <owners>Fahmi Noor Fiqri</owners>
+    
+    <licenseUrl>https://www.gnu.org/licenses/gpl-3.0.en.html</licenseUrl>
+    <projectUrl>https://github.com/fahminlb33/PBXListener</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright Kodesiana.com 2018</copyright>
+    <tags>pbx pabx serial serialport pbxlistener</tags>
+  </metadata>
+</package>
