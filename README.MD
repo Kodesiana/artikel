@@ -1,36 +1,32 @@
-# Kodesiana.com Post-Samples :tada:
+# Kodesiana.com Articles
 
 Halo! Selamat datang di repositori sampel kode dari Kodesiana.com.
 Disini kamu bisa mencari berbagai source code aplikasi yang pernah
-dibuat oleh tim Kodesiana.com dari artikel di websitenya.
+dibuat oleh penulis Kodesiana.com.
 
 Kami sengaja menyimpan semua kode di GitHub agar memudahkan akses
 kode dari berbagai platform dan menghindari *broken link*.
 
-## Daftar Isi :memo:
-
-1. [Membuat Countdown Timer Dua Monitor WinForms C#/VB.NET][1a] ([**source code**][1b])
-2. [Teknik Pagination dan Styling untuk DataGridView C#/VB.NET][2a] (**source code**)
-3. [16+ Tips Manipulasi DateTime pada C#/VB.NET][3a] ([**source code**][3b])
-4. [Tutorial Installer dengan WiX Toolset][4a] ([**source code**][4b])
-5. [Menampilkan Data dari PBX menggunakan SerialPort C#/VB.NET][5a] (**source code**)
-
-
-## Lisensi :whale2:
+## Lisensi dan Atribusi
 
 Semua kode pada repositori ini dilisensikan di bawah lisensi MIT.
+Harap berikan artibusi jika kamu menggunakan kode dari repositori ini!
 
-Harap berikan artibusi untuk jerih payah author di Kodesiana.com :smile:
+Format APA 7th:
 
-[1a]: https://kodesiana.com/c-sharp-vb-net/membuat-countdown-timer-dua-monitor-winforms-c-vb-net/
-[1b]: https://github.com/Kodesiana/Post-Samples/tree/master/Countdown-Timer
+```
+Fiqri, Fahmi Noor. 2022. Kodesiana/Artikel: Kumpulan sampel aplikasi dari Kodesiana.com (https://github.com/Kodesiana/Artikel). Diakses 02 Januari 2021.
+```
 
-[2a]: https://kodesiana.com/c-sharp-vb-net/teknik-pagination-dan-styling-untuk-datagridview-c-vb-net/
+BibTeX:
 
-[3a]: https://kodesiana.com/tutorial/16-tips-manipulasi-datetime-pada-c-vb-net/
-[3b]: https://github.com/Kodesiana/Post-Samples/tree/master/DateTime-Formatting
+```
+@misc{NoorFiqri2022,
+	title        = {Kodesiana/Artikel: Kumpulan sampel aplikasi dari Kodesiana.com},
+	author       = {Noor Fiqri, Fahmi},
+	year         = 2022,
+	url          = {https://github.com/Kodesiana/Artikel}
+}
+```
 
-[4a]: https://kodesiana.com/c-sharp-vb-net/tutorial-installer-instalasi-wix-toolset/
-[4b]: https://github.com/Kodesiana/Post-Samples/tree/master/Wix-Installer-Example
-
-[5a]: https://kodesiana.com/tutorial/menampilkan-data-dari-pbx-menggunakan-serialport-c-vb-net-bagian-1/
+Tahun sesuai dengan tanggal file pada Git.
