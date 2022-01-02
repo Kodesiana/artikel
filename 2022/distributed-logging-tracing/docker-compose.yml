@@ -1,0 +1,152 @@
+version: "3.9"
+
+# --- app volumes
+volumes:
+  volume_es:
+    driver: local
+
+# --- app networks
+networks:
+  network_main:
+    driver: bridge
+
+# --- app services
+services:
+  # elasticsearch node
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - cluster.name=docker-cluster
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - cluster.routing.allocation.disk.threshold_enabled=true
+      - cluster.routing.allocation.disk.watermark.low=65%
+      - cluster.routing.allocation.disk.watermark.high=70%
+      - xpack.security.enabled=true
+      - xpack.security.audit.enabled=true
+      - ELASTIC_PASSWORD=password
+      - "ES_JAVA_OPTS=-XX:UseAVX=2 -Xms512m -Xmx512m"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - volume_es:/usr/share/elasticsearch/data
+    networks:
+      - network_main
+
+  # elastic apm server
+  apm:
+    image: docker.elastic.co/apm/apm-server:7.15.2
+    depends_on: 
+      - elasticsearch
+    healthcheck:
+      test: ["curl --silent --fail localhost:8200 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - 8200:8200
+    command: >
+      apm-server -e
+        -E apm-server.rum.enabled=true
+        -E apm-server.kibana.enabled=true
+        -E apm-server.kibana.host=kibana:5601
+        -E setup.kibana.host=kibana:5601
+        -E setup.template.settings.index.number_of_replicas=0
+        -E output.elasticsearch.hosts=["elasticsearch:9200"]
+        -E output.elasticsearch.username=elastic
+        -E output.elasticsearch.password=password
+    networks:
+      - network_main
+
+  # kibana dashboard
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.2
+    restart: always
+    depends_on: 
+      - elasticsearch
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: password
+    networks:
+      - network_main
+
+  # rabbitmq
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: ["rabbitmq-diagnostics -q ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - network_main
+
+  # backend services
+  basket_service:
+    build: ./backend-service
+    command: ["node", "basket-app.js"]
+    restart: always
+    environment:
+      - SERVICE_NAME=basket-service
+    depends_on: 
+      - elasticsearch
+      - apm
+      - rabbitmq
+    ports:
+      - 3001:3001
+    networks:
+      - network_main
+  catalogue_service:
+    build: ./backend-service
+    command: ["node", "catalogue-app.js"]
+    restart: always
+    environment:
+      - SERVICE_NAME=catalogue-service
+    depends_on: 
+      - elasticsearch
+      - apm
+      - rabbitmq
+    ports:
+      - 3002:3002
+    networks:
+      - network_main
+  order_service:
+    build: ./backend-service
+    command: ["node", "order-app.js"]
+    restart: always
+    environment:
+      - SERVICE_NAME=order-service
+    depends_on: 
+      - elasticsearch
+      - apm
+      - rabbitmq
+    ports:
+      - 3003:3003
+    networks:
+      - network_main
+  notification_service:
+    build: ./backend-service
+    command: ["node", "notification-app.js"]
+    restart: always
+    environment:
+      - SERVICE_NAME=notification-service
+    depends_on: 
+      - elasticsearch
+      - apm
+      - rabbitmq
+    networks:
+      - network_main
