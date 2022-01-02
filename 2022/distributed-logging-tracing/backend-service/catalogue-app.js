@@ -29,11 +29,13 @@ process.on('SIGTERM', () => {
 
     // consume messages
     await channel.consume(queue.queue, msg => {
-        const apmTransaction = apm.startTransaction(config.exhangeName, 'rabbitmq');
-        
+        const apmTransaction = apm.startTransaction(config.exhangeName, 'rabbitmq', {
+            childOf: msg.properties.headers['x-elastic-apm-traceparent']
+        });
+
         logger.info(`Received order-confirmed message: ${msg.content.toString()}`);
         logger.info('Catalogue has been updated.');
-        
+
         apmTransaction.end();
     });
 

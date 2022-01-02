@@ -31,19 +31,23 @@ process.on('SIGTERM', () => {
         logger.info(`Processing order: ${req.params.name}`);
 
         // get basket
-        const basket = await httpClient.get('http://basket_service:3001/basket/asdsad');
+        const basket = await httpClient.get('http://basket_service:3001/basket/' + req.params.name);
         logger.debug(`Received basket: ${JSON.stringify(basket.data)}`);
 
         // check stock
-        const stock = await httpClient.get('http://catalogue_service:3002/catalogue/asas');
+        const stock = await httpClient.get('http://catalogue_service:3002/catalogue/' + req.params.name);
         logger.debug(`Received stock: ${JSON.stringify(stock.data)}`);
 
         // publish event
-        channel.publish('order-confirmed', '', Buffer.from(JSON.stringify({
+        const message = Buffer.from(JSON.stringify({
             created: true,
             basket: basket.data,
             stock: stock.data
-        })));
+        }));
+
+        channel.publish('order-confirmed', '', message, {
+            headers: {'x-elastic-apm-traceparent': apm.currentTraceparent}
+        });
 
         // create order
         logger.info("Order has been created.");
